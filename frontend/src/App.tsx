@@ -1,26 +1,60 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
-function App() {
+function GoButton(props: any) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={props.BlahClick}>Go!</button>
+      <br></br>
+    </div>
+  );
+}
+function AmountOfGo(props: any) {
+  return <label>{props.num}</label>;
+}
+function App() {
+  //now in app because you want all the children to have access
+  const [count, setCount] = useState(0);
+  const incrementGo = () => setCount(count + 1);
+  return (
+    <div>
+      <GoButton blahClick={incrementGo} />
+      {/*or you could do this */}
+      {/*<GoButton blahClick={() => setCount(count + 1)} />*/}
+      {/*giving a property */}
+      <AmountOfGo num={count} />
+    </div>
+  );
+}
+export default App;
+/* class Welcome extends React.Component {
+  render() {
+    return <h1>This website gives some rando numbers</h1>;
+  }
+}
+class Conclusion extends React.Component {
+  render() {
+    return <h1>Hope you enjoyed</h1>;
+  }
+}
+//function component just returns
+function Rando() {
+  return (
+    <div>
+      //ust random is the class random() is referencing the instance of the class
+      <h2>Random Number: {Math.random()}</h2>
     </div>
   );
 }
 
-export default App;
+function App() {
+  return (
+    <div>
+      <Welcome />
+      <Rando />
+      <br />
+      <Conclusion />
+    </div>
+  );
+} */
